@@ -23,6 +23,8 @@ Route::get('/', function () {
 
 Route::get('/forecast', [WeatherController::class, 'index']);
 
+Route::get('/forecast/{city}', [\App\Http\Controllers\ForecastController::class, 'index']);
+
 
 
 

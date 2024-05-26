@@ -25,6 +25,14 @@ class WeatherSeeder extends Seeder
 
         foreach ($forecast as $city=>$temperature)
         {
+            $userWeather = WeatherModel::where('city', $city);
+
+            if ($userWeather != null)
+            {
+                $this->command->getOutput()->error('Ovaj grad vec postoji!');
+                continue;
+            }
+
             WeatherModel::create([
                 'city' => $city,
                 'temperature' => $temperature
