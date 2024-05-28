@@ -2,19 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CitiesModel;
+use App\Models\ForecastsModel;
+
 class ForecastController extends Controller
 {
-    public function index($city)
+    public function index(CitiesModel $city)
     {
-        $forecasts = [
-            "podgorica" => [25, 27, 29, 22, 7],
-            "niksic" => [19, 20, 21, 22, 9],
-        ];
+        $forecast = ForecastsModel::where('city_id', $city->id)->get();
 
-        if (!array_key_exists($city, $forecasts)) {
-            die('Ovaj grad ne postoji');
-        }
-
-        dd($forecasts[$city]);
+        return view('singleForecast', compact('forecast'));
     }
 }
