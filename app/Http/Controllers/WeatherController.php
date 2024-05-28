@@ -10,8 +10,6 @@ class WeatherController extends Controller
     {
         $forecast = ForecastsModel::all();
 
-
-
         return view('weather', compact('forecast'));
     }
 }
