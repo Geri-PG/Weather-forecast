@@ -11,8 +11,7 @@ class ForecastController extends Controller
             "niksic" => [19, 20, 21, 22, 9],
         ];
 
-        if(!array_key_exists($city, $forecasts))
-        {
+        if (!array_key_exists($city, $forecasts)) {
             die('Ovaj grad ne postoji');
         }
 

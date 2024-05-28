@@ -1,3 +1,3 @@
-@foreach($forecast as $city=>$temperature)
-    <p>In {{$city}} is {{$temperature}} degrees</p>
+@foreach($forecast as $weather)
+    <p>In {{$weather->city->name}} is {{$weather->temperature}} degrees</p>
 @endforeach

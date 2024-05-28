@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ForecastsModel;
+
 class WeatherController extends Controller
 {
-   public function index()
-   {
-       $forecast = [
-           "Podgorica" => 25,
-           "Nikšić" => 22,
-           "Herceg Novi" => 24,
-           "Bar" => 26,
-           "Budva" => 27,
-           "Kotor" => 23,
-           "Cetinje" => 21
-       ];
+    public function index()
+    {
+        $forecast = ForecastsModel::all();
 
-       return view('weather', compact('forecast'));
-   }
+
+
+        return view('weather', compact('forecast'));
+    }
 }
