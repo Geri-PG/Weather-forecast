@@ -26,6 +26,8 @@ Route::get('/forecast', [WeatherController::class, 'index']);
 
 Route::get('/single-forecast/{city:name}', [ForecastController::class, 'index']);
 
+Route::view('/admin/weather', 'weatherCity');
+
 
 
 
