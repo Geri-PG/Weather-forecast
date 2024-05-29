@@ -1,3 +1,3 @@
-@foreach($forecast as $singleForecast)
-    <p>Datum: {{$singleForecast->date}} - temperatura: {{$singleForecast->temperature}}</p>
+@foreach($city->forecasts as $singleForecast)
+    <p>Date: {{$singleForecast->date}} - temperature: {{$singleForecast->temperature}}</p>
 @endforeach
