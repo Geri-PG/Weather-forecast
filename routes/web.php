@@ -28,6 +28,9 @@ Route::get('/single-forecast/{city:name}', [ForecastController::class, 'index'])
 
 Route::view('/admin/weather', 'weatherCity');
 
+Route::post('/admin/weather/update', [\App\Http\Controllers\AdminWeatherController::class, 'update'])
+    ->name('weather.update');
+
 
 
 

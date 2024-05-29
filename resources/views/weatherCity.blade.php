@@ -1,5 +1,8 @@
 @php use App\Models\CitiesModel;use App\Models\WeatherModel; @endphp
-<form action="">
+
+
+<form method="POST" action="{{route('weather.update')}}" >
+    @csrf
     <input type="text" name="temperature" placeholder="Add temperature">
     <select type="text" name="city_id">
         @foreach(CitiesModel::all() as $cities)
