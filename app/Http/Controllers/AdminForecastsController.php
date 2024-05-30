@@ -17,10 +17,10 @@ class AdminForecastsController extends Controller
             'weather_type' => 'required',
         ]);
 
-            dd($request->all());
+
         ForecastsModel::create($request->all());
 
-        //return redirect()->back();
+        return redirect()->back();
 
     }
 }

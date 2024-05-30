@@ -1,9 +1,9 @@
-@php use App\Models\CitiesModel;use App\Models\ForecastsModel; @endphp
+
 
 <form method="POST" action="{{route('forecast.save')}}">
     @csrf
-    <select>
-        @foreach(CitiesModel::all() as $city)
+    <select name="city_id">
+        @foreach(\App\Models\CitiesModel::all() as $city)
             <option value="{{$city->id}}">{{$city->name}}</option>
         @endforeach
     </select>
@@ -11,7 +11,7 @@
     <input type="text" name="temperature" placeholder="Enter temperature">
 
     <select name="weather_type">
-        @foreach(ForecastsModel::WEATHER as $weather)
+        @foreach(\App\Models\ForecastsModel::WEATHER as $weather)
             <option>{{$weather}}</option>
         @endforeach
     </select>
@@ -21,7 +21,7 @@
     <button>Save</button>
 </form>
 
-@foreach(CitiesModel::all() as $city)
+@foreach(\App\Models\CitiesModel::all() as $city)
     <p>{{$city->name}}</p>
     <ul>
         @foreach($city->forecasts as $forecast)
