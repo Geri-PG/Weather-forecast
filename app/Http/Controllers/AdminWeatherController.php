@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ForecastsModel;
 use App\Models\WeatherModel;
 use Illuminate\Http\Request;
 
@@ -20,4 +21,5 @@ class AdminWeatherController extends Controller
 
         return redirect()->back();
     }
+
 }
