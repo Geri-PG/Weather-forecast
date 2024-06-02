@@ -20,18 +20,17 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome');
+
 
 Route::get('/forecast', [WeatherController::class, 'index']);
 Route::get('/single-forecast/{city:name}', [ForecastController::class, 'index']);
 
-Route::view('/admin/weather', 'weatherCity');
+Route::view('/admin/weather', 'admin.weatherCity');
 Route::post('/admin/weather/update', [AdminWeatherController::class, 'update'])
     ->name('weather.update');
 
-Route::view('/admin/forecasts', 'forecasts');
+Route::view('/admin/forecasts', 'admin.forecasts');
 Route::post('/admin/forecast/save', [AdminForecastsController::class, 'save'])
     ->name('forecast.save');
 
