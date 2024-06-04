@@ -25,4 +25,22 @@ class UserCitiesController extends Controller
         return redirect()->back();
 
     }
+
+    public function unfavourite($city)
+    {
+        $user = Auth::user();
+
+        if ($user === null) {
+            return redirect()->back()->with(['error' => 'Please login, if you want to continue!']);
+        }
+
+       $userFavourite = UserCitiesModel::where([
+            'city_id' => $city,
+            'user_id' => $user->id,
+        ])->first();
+
+            $userFavourite->delete();
+
+            return redirect()->back();
+    }
 }
