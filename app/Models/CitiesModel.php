@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class CitiesModel extends Model
 {
     protected $table = 'cities';
-
     protected $fillable = ['name'];
 
     public function forecasts()

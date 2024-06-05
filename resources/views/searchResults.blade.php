@@ -3,18 +3,15 @@
 
 @section('content')
 
-    <div>
-        @if(Session::has('error'))
-            <a href="/login">
-                <p class="btn btn-danger fw-bold">{{Session::get('error')}}</p>
-            </a>
-        @endif
-    </div>
-
     <div class="d-flex flex-wrap container mt-5">
+        @if(Session::has('error'))
+            <p class="btn btn-danger fw-bold col-12">{{Session::get('error')}}</p>
+            <a class="btn btn-primary" href="/login">Please login</a>
+        @endif
+
         @foreach($cities as $city)
             @php
-                $icon = ForecastHelper::weatherIcon($city->today->weather_type);
+                $icon = ForecastHelper::weatherIcon($city->today->weather_type)
             @endphp
 
             <p>
@@ -27,8 +24,8 @@
                         <i class="fa-regular fa-heart"></i>
                     </a>
                 @endif
-                <a class="btn btn-primary m-2" href="{{route('forecast.permalink', ['city' => $city->name])}}">
-                    <i class="fa-solid {{$icon}}"></i> {{$city->weather_type}}{{$city->name}}
+                <a class="btn btn-primary me-4" href="{{route('forecast.permalink', ['city' => $city->name])}}">
+                    <i class="fa-solid {{$icon}}"></i> {{$city->name}}
                 </a>
             </p>
         @endforeach
