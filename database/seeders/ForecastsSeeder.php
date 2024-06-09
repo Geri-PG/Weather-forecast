@@ -31,19 +31,26 @@ class ForecastsSeeder extends Seeder
 
                 $temperature = null;
 
-                if ($temperature === rand(-50, 50)) {
-                    $weather_type = 'sunny';
-                } elseif ($temperature === rand(-50, 150)) {
-                    $weather_type = 'cloudy';
-                } elseif ($temperature === rand(-10, 50)) {
-                    $weather_type = 'rainy';
-                } elseif ($temperature === rand(-50, 1)) {
-                    $weather_type = 'snowy';
+                switch ($weather_type)
+                {
+                    case 'sunny':
+                        $temperature = rand(-50, 50);
+                        break;
+                    case 'cloudy':
+                        $temperature = rand(-50, 15);
+                        break;
+                    case 'rainy':
+                        $temperature = rand(-10, 50);
+                        break;
+                    case 'snowy';
+                        $temperature = rand(-50, 1);
+                        break;
+
                 }
 
                 ForecastsModel::create([
                     'city_id' => $city->id,
-                    'temperature' => rand(-50, 50),
+                    'temperature' => $temperature,
                     'date' => Carbon::now()->addDays($i),
                     'weather_type' => $weather_type,
                     'probability' => $probability,

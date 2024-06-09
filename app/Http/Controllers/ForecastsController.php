@@ -12,7 +12,6 @@ class ForecastsController extends Controller
         $cityName = $request->get('city');
 
         $cities = CitiesModel::with('today')->where('name', 'LIKE', "%$cityName%")->get();
-
         if (count($cities) === 0) {
             return redirect()->back()->with('error', 'not found');
         }
@@ -23,6 +22,7 @@ class ForecastsController extends Controller
             $user = Auth::user()->cityFavourites;
             $user = $user->pluck('city_id')->toArray();
         }
+
         return view('searchResults', compact('cities', 'user'));
     }
 }

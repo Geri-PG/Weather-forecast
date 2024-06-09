@@ -11,7 +11,9 @@
 
         @foreach($cities as $city)
             @php
-                $icon = ForecastHelper::weatherIcon($city->today->weather_type)
+
+                    $icon = ForecastHelper::weatherIcon($city->today->weather_type);
+
             @endphp
 
             <p>
@@ -24,6 +26,7 @@
                         <i class="fa-regular fa-heart"></i>
                     </a>
                 @endif
+
                 <a class="btn btn-primary me-4" href="{{route('forecast.permalink', ['city' => $city->name])}}">
                     <i class="fa-solid {{$icon}}"></i> {{$city->name}}
                 </a>

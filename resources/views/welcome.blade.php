@@ -3,7 +3,8 @@
 @section('content')
 
     @foreach($userFavourites as $userFavourite)
-        {{$userFavourite->city->today->temperature}}
+        {{$userFavourite->city->name}}
+{{--        {{$userFavourite->city->today->temperature}}--}}
     @endforeach
 
     <form class="text-left d-flex flex-wrap flex-column container justify-content-center align-item-center col-12" method="GET" action="{{route('forecast.search')}}">

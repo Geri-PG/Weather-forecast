@@ -32,7 +32,7 @@ Route::get('/', function () {
 
     $user = Auth::user();
     if ($user !== null) {
-        $userFavourites = \App\Models\UserCitiesModel::where('user_id', $user->id)->get();
+        $userFavourites = \App\Models\UserCitiesModel::where(['user_id'=>$user->id])->get();
 
     }
     return view('welcome', compact('userFavourites'));

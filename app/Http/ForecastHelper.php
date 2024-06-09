@@ -13,7 +13,9 @@ class ForecastHelper
 
     public static function weatherIcon($type)
     {
-        return self::WEATHER_TYPE [$type];
+        $icon = self::WEATHER_TYPE [$type];
+
+        return $icon;
 
 //        if ($type === 'rainy')
 //        {
