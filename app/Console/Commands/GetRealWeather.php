@@ -34,7 +34,7 @@ class GetRealWeather extends Command
         $dbCity = CitiesModel::where('name', $city)->first();
 
         if ($dbCity === null) {
-           $dbCity = CitiesModel::create(['name' => $city]);
+            $dbCity = CitiesModel::create(['name' => $city]);
         }
 
 
@@ -43,11 +43,10 @@ class GetRealWeather extends Command
             'q' => $city,
             'aqi' => 'no',
             'days' => 1,
-    ]);
+        ]);
 
         $jsonResponse = $response->json();
-        if (isset($jsonResponse['error']))
-        {
+        if (isset($jsonResponse['error'])) {
             $this->output->error($jsonResponse['error']['message']);
         }
 
@@ -56,12 +55,12 @@ class GetRealWeather extends Command
             return;
         }
 
-//        dd($jsonResponse['forecast']['forecastday'][0]['day']['maxtemp_c']); php artisan weather:get-real Podgorica
+
         $date = $jsonResponse['forecast']['forecastday'][0]['date'];
         $temperature = $jsonResponse['forecast']['forecastday'][0]['day']['avgtemp_c'];
         $weatherType = $jsonResponse['forecast']['forecastday'][0]['day']['condition']['text'];
         $probability = $jsonResponse['forecast']['forecastday'][0]['day']['avghumidity'];
-        // dd($temperature, $date, $weatherType, $probability);
+
 
         $forecast = [
             'city_id' => $dbCity->id,
